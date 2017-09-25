@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby -wU
+require 'pathname'
+
+source_path = (Pathname.new(__FILE__).dirname + '../lib').expand_path
+$LOAD_PATH << source_path
+
+require 'rails_base'
+require 'highline/import'
+require 'fileutils'
+
+def say_something(message)
+  cli = HighLine.new
+  cli.say("<%= color('#{message}', BOLD) %>!")
+end
+
+def ask_for_something(ask)
+  cli = HighLine.new
+  cli.ask ask
+end
+
+def clone_project(version, uri, destination_folder)
+  command = "git clone -b #{version.strip!} --depth 1 #{uri} #{destination_folder}"
+  system(command)
+end
+
+def remove_git_configuration(project_folder)
+  gitConfig = project_folder + '/.git'
+  FileUtils.rm_rf(gitConfig)
+end
+
+if !ARGV.empty? && (['-v', '--version'].include? ARGV[0])
+  puts RailsBase::Version
+  exit 0
+end
+
+say_something('Getting ready to get an amazing project')
+answer = ask_for_something("What would be the name for project folder?")
+
+if Dir.exist?(answer)
+  say_something('Please dont use same project again and again')
+else
+  #Fetch tags & compare with last compatible version
+  tags  = "git ls-remote -t #{RailsBase::REMOTEURI} | awk '{print $2}'| cut -d '/' -f 3 | cut -d '^' -f 1 | uniq"
+  referenceTag = RailsBase::APIBASEVERSION
+  major = referenceTag.split('.')[0]
+  minor = referenceTag.split('.')[2]
+  final_retrieving_version = `#{tags} | grep '#{major}.#{minor}.[0-9]' | tail -n 1 `
+  
+  say_something("Fetching api version ... #{final_retrieving_version}")
+  say_something('Please ignore following warnings... we are persuading them to stop bothering you')
+
+  clone_project(final_retrieving_version, RailsBase::REMOTEURI, answer)
+  remove_git_configuration(answer)
+end
+
+puts "Finished"
