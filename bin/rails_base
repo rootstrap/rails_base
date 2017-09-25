@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby -wU
+require 'pathname'
+
+source_path = (Pathname.new(__FILE__).dirname + '../lib').expand_path
+$LOAD_PATH << source_path
+
+require 'rails_base'
+
+if !ARGV.empty? && (['-v', '--version'].include? ARGV[0])
+  puts RailsBase::Version
+  exit 0
+end
+
+templates_root = File.expand_path(File.join("..", "app"), File.dirname(__FILE__))
+RailsBase::AppBuilder.source_root templates_root
+RailsBase::AppBuilder.source_paths << Rails::Generators::AppGenerator.source_root << templates_root
+
+RailsBase::AppBuilder.start
+
+puts "Finished"
