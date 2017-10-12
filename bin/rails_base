@@ -5,16 +5,53 @@ source_path = (Pathname.new(__FILE__).dirname + '../lib').expand_path
 $LOAD_PATH << source_path
 
 require 'rails_base'
+require 'highline/import'
+require 'fileutils'
+
+def say_something(message)
+  cli = HighLine.new
+  cli.say("<%= color('#{message}', BOLD) %>!")
+end
+
+def ask_for_something(ask)
+  cli = HighLine.new
+  cli.ask ask
+end
+
+def clone_project(version, uri, to_folder)
+  command = "git clone -b #{version.strip!} --depth 1 #{uri} #{to_folder}"
+  system(command)
+end
+
+def remove_git_configuration(project_folder)
+  git_config = project_folder + '/.git'
+  FileUtils.rm_rf(git_config)
+end
 
 if !ARGV.empty? && (['-v', '--version'].include? ARGV[0])
-  puts RailsBase::Version
+  puts RailsBase::VERSION
   exit 0
 end
 
-templates_root = File.expand_path(File.join("..", "app"), File.dirname(__FILE__))
-RailsBase::AppBuilder.source_root templates_root
-RailsBase::AppBuilder.source_paths << Rails::Generators::AppGenerator.source_root << templates_root
+say_something('Getting ready to get an amazing project')
+answer = ask_for_something('What would be the name for project folder?')
 
-RailsBase::AppBuilder.start
+if Dir.exist?(answer)
+  say_something('Please dont use same project again and again')
+else
+  # Fetch tags & compare with last compatible version
+  filters = "awk '{print $2}'| cut -d '/' -f 3 | cut -d '^' -f 1 | uniq"
+  tags = "git ls-remote -t #{RailsBase::REMOTE_URI} | #{filters}"
+  reference_tag = RailsBase::API_BASE_VERSION
+  major = reference_tag.split('.')[0]
+  minor = reference_tag.split('.')[2]
+  final_version = `#{tags} | grep '#{major}.#{minor}.[0-9]' | tail -n 1 `
 
-puts "Finished"
+  say_something("Fetching api version ... #{final_version}")
+  say_something('Please ignore following warnings... we are persuading them to stop bothering you')
+
+  clone_project(final_version, RailsBase::REMOTE_URI, answer)
+  remove_git_configuration(answer)
+end
+
+say_something('Finished')

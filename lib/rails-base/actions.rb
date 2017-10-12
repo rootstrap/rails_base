@@ -1,4 +1,5 @@
 module RailsBase
+  # This module provides help to file manipulation
   module Actions
     def replace_in_file(relative_path, find, replace)
       path = File.join(destination_root, relative_path)
@@ -6,7 +7,7 @@ module RailsBase
       unless contents.gsub!(find, replace)
         raise "#{find.inspect} not found in #{relative_path}"
       end
-      File.open(path, "w") { |file| file.write(contents) }
+      File.open(path, 'w') { |file| file.write(contents) }
     end
 
     def action_mailer_host(rails_env, host)
@@ -21,7 +22,7 @@ module RailsBase
 
     def configure_application_file(config)
       inject_into_file(
-        "config/application.rb",
+        'config/application.rb',
         "\n\n    #{config}",
         before: "\n  end"
       )
