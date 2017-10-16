@@ -1,38 +1,44 @@
 # Rails::Base
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails/base`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a project generator that comes with a lot of amazing features/help code.
+It is intended to be a start point for your new projects and also import new functionalities on a safe way to your existing ones.
 
-TODO: Delete this and the text above, and describe your gem
+And obviously if you want something new, just ask for it!!! or do a pull request if you are brave enough
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'rails-base'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it yourself as:
 
     $ gem install rails-base
 
+This will generate some commands with it, and thats all you need.
+
 ## Usage
 
-TODO: Write usage instructions here
+* First Project
 
-## Development
+Just choose a folder and run
+		
+		rails_base
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+* Existing Project
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+		Comming soon :)
+
+## Upcoming awesome features
+
+* Facebook Integration
+* Carrierwave
+* Active Admin
+* Chats
+* Twilio
+* Test & Quality tools
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/fedeagripa/rails-base. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports (please use Issues) and pull requests are welcome on GitHub at https://github.com/rootstrap/rails_base. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
