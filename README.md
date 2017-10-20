@@ -19,12 +19,14 @@ This will generate some commands with it, and thats all you need.
 
 Just choose a folder and run
 		
-		rails_base
+		rails_base new
 
 * Existing Project
 
 
-		Comming soon :)
+		rails_base add FEATURE
+
+Or just 'rails_base add' to get some help
 
 ## Upcoming awesome features
 

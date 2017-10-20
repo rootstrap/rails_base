@@ -53,3 +53,6 @@ Metrics/PerceivedComplexity:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/GlobalVars:
+  AllowedVariables: [$thor_runner]
