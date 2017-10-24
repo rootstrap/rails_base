@@ -1,0 +1,3 @@
+facebook:
+  not_authorized: 'Not Authorized'
+  already_registerd: 'User already registered with email/password'
