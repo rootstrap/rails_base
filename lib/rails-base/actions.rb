@@ -1,3 +1,5 @@
+require 'commander/import'
+
 module RailsBase
   # This module provides help to file manipulation
   module Actions
@@ -34,6 +36,22 @@ module RailsBase
         "\n  #{config}",
         before: "\nend"
       )
+    end
+
+    def self.say_something(message, style = 'BOLD')
+      cli = HighLine.new
+      cli.say("<%= color('#{message}', #{style}) %>")
+    end
+
+    def self.ask_for_something(ask)
+      cli = HighLine.new
+      cli.ask ask
+    end
+
+    def self.fetch_from_remote(version)
+      say_something("Fetching api version ... #{version}")
+      message = 'Please ignore following warnings... we are persuading them to stop bothering you'
+      say_something(message)
     end
   end
 end
