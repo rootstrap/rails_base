@@ -32,7 +32,8 @@ describe 'POST api/v1/users/facebook', type: :request do
     end
     before do
       stub_request(:get, facebook_api_path)
-        .with(query: hash_including(access_token: '123456', fields: 'email,first_name,last_name'))
+        .with(query: hash_including(access_token: '123456',
+                                    fields: 'email,first_name,last_name'))
         .to_return(status: 200, body: facebook_response.to_json)
     end
 

@@ -1,22 +1,23 @@
 require 'fileutils'
-require 'thor'
-$thor_runner = true
 
 module RailsBase
   # This module provides commands implementation
   module Commands
+    extend RailsBase::CliActions
+
     def self.new_project
-      RailsBase::Actions.say_something('Getting ready to get an amazing project')
-      answer = RailsBase::Actions.ask_for_something('What would be the name for project folder?')
+      say_something('Getting ready to get an amazing project')
+      answer = RailsBase::CliActions.ask_for_something('What would be the name for project folder?')
       if Dir.exist?(answer)
-        RailsBase::Actions.say_something('Please dont use same project again and again')
+        say_something('Please dont use same project again and again')
       else
         final_version = manage_tags
-        RailsBase::Actions.fetch_from_remote(final_version)
+        RailsBase::GitActions.fetch_from_remote(final_version)
         clone_project(final_version, RailsBase::REMOTE_URI, answer)
         remove_git_configuration(answer)
       end
-      RailsBase::Actions.say_something('Download complete')
+      FileUtils.cd("#{Dir.pwd}/#{answer}")
+      say_something('Download complete')
     end
 
     def self.add_feature(feature)
@@ -25,6 +26,7 @@ module RailsBase
       else
         case feature
         when FEATURE_OPTIONS[:facebook]
+          RailsBase::Features.facebook
           puts 'Mark is happy'
         when FEATURE_OPTIONS[:active_admin]
           puts 'simple...'
@@ -57,9 +59,9 @@ module RailsBase
     end
 
     def self.display_menu
-      RailsBase::Actions.say_something('FEATURE OPTIONS:')
+      say_something('FEATURE OPTIONS:')
       RailsBase::FEATURE_OPTIONS.each_value do |feature|
-        RailsBase::Actions.say_something(" #{feature}")
+        say_something(" #{feature}")
       end
     end
   end

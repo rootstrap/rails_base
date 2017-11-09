@@ -105,3 +105,5 @@ UnusedPrivateMethod:
   enabled: false
 UtilityFunction:
   enabled: false
+DataClump:
+  max_copies: 3

@@ -15,6 +15,7 @@ Metrics/BlockLength:
   Max: 25
   Exclude:
     - spec/**/*
+    - 'lib/rails-base/features.rb'
 
 Metrics/BlockNesting:
   Max: 4
@@ -30,6 +31,8 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 24
+  Exclude:
+    - 'lib/rails-base/features.rb'
 
 Metrics/ModuleLength:
   CountComments: false  # count full line comments?
@@ -43,6 +46,8 @@ Metrics/LineLength:
   URISchemes:
     - http
     - https
+  Exclude:
+    - 'lib/rails-base/features.rb'
 
 Metrics/ParameterLists:
   Max: 5
@@ -54,5 +59,10 @@ Metrics/PerceivedComplexity:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/GlobalVars:
-  AllowedVariables: [$thor_runner]
+Style/BlockLength:
+  Exclude:
+    - 'lib/templates/**/*.rb'
+
+Style/InitialIndentation:
+  Exclude:
+    - 'lib/templates/**/*.rb'
