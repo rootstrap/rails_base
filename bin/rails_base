@@ -23,7 +23,7 @@ command :new do |c|
   c.action do
     RailsBase::Commands.new_project
     RailsBase::Commands.display_menu
-    feature = RailsBase::Actions.ask_for_something('Now please select featrues to add')
+    feature = RailsBase::CliActions.ask_for_something('Now please select featrues to add')
     RailsBase::Commands.add_feature(feature)
   end
 end
