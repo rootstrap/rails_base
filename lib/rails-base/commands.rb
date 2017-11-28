@@ -30,6 +30,9 @@ module RailsBase
           puts 'Mark is happy'
         when FEATURE_OPTIONS[:active_admin]
           puts 'simple...'
+        when FEATURE_OPTIONS[:chat]
+          RailsBase::Features.chat
+          puts 'now go and start talking'
         when FEATURE_OPTIONS[:all]
           puts 'Oh you greedy one'
         else
@@ -49,7 +52,7 @@ module RailsBase
     end
 
     def self.clone_project(version, uri, to_folder)
-      command = "git clone -b #{version.strip!} --depth 1 #{uri} #{to_folder}"
+      command = "git clone -b #{version.strip!} --depth 1 #{uri} #{to_folder} &> /dev/null 2>&1"
       system(command)
     end
 

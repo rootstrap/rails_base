@@ -22,7 +22,7 @@ DuplicateMethodCall:
   allow_calls: []
 FeatureEnvy:
   enabled: true
-  exclude: []
+  exclude: ['AddChat', 'AddMessage', 'AddParticipant']
 InstanceVariableAssumption:
   enabled: false
 IrresponsibleModule:
@@ -90,7 +90,7 @@ UncommunicativeParameterName:
   - !ruby/regexp /[A-Z]/
   accept: []
 UncommunicativeVariableName:
-  enabled: true
+  enabled: false
   exclude: []
   reject:
   - !ruby/regexp /^.$/

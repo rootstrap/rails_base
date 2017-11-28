@@ -66,3 +66,7 @@ Style/BlockLength:
 Style/InitialIndentation:
   Exclude:
     - 'lib/templates/**/*.rb'
+
+Style/SymbolArray:
+  Exclude:
+    - 'lib/templates/**/add_*.rb'
