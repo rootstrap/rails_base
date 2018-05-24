@@ -2,19 +2,20 @@ module Api
   module V1
     class ChatsController < Api::V1::ApiController
       def index
-        Chat.where(users: current_user)
+        @chats = Chat.joins(:participants).where('participants.user' => current_user)
       end
 
       def show
-        chat = Chat.find(params[:chat_id])
-        return render json: { messages: {} }, status: :ok unless chat
+        chat = Chat.find(params[:id])
+        if !chat || chat.messages.empty?
+          return render json: { messages: {} }, status: :ok
+        end
         chat.mark_user_seen(current_user)
         get_messages(chat, params[:page])
       end
 
       def create
-        conversation = chat_name
-        chat = Chat.new(name: conversation)
+        chat = Chat.new(name: chat_name)
         chat.users << params[:users].each { |user| User.find(user) }
         chat.save!
       end
@@ -28,7 +29,7 @@ module Api
       private
 
       def get_messages(chat, page)
-        @messages = chat.messages.order(created_at: :desc).page(page)
+        @messages = chat.messages.order_by_date.page(page)
         @messages = @messages.sort_by(&:created_at)
       end
 

@@ -1,20 +1,19 @@
 require 'rails_helper'
 
 describe ChatService do
-  let(:user) { create(:user) }
-  let(:chat) { create(:chat) }
-  let(:participant) { create(:participant, user: user, chat: chat) }
+  let!(:user) { create(:user) }
+  let!(:chat) { create(:chat) }
+  let!(:participant) { create(:participant, user: user, chat: chat) }
 
-  it 'update connected user' do
-    t = DateTime.now
-    TimeCop.freeze(t) do
-      expect { ChatService.user_conected(user, chat) }.to
-      change(participant.last_connection).from(nil).to(t)
+  describe '.create_message' do
+    it 'creates a message' do
+      expect do
+        ChatService.create_message(chat, 'hello', user)
+      end.to change(Message, :count).by(1)
     end
-  end
 
-  it 'create a message' do
-    messages = Message.count
-    expect { ChatService.send_message(chat, 'hello', user) }.to change(messages).by(1)
+    it 'returns a message' do
+      expect(ChatService.create_message(chat, 'hello', user)).to be_a(Message)
+    end
   end
 end

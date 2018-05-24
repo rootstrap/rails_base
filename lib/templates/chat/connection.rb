@@ -17,7 +17,7 @@ module ApplicationCable
     end
 
     def find_user
-      user_id = request.headers['HTTP_AUTHORIZATION'] || cookies.signed[:user_id]
+      user_id = request.headers['HTTP_AUTHORIZATION'] || request.query_parameters['user'].to_i
       User.find_by(id: user_id)
     end
   end

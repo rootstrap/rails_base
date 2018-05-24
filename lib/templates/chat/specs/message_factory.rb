@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :message do
-    user 		{ create(:user) }
-    chat 		{ create(:chat) }
+    chat { create(:chat) }
+    user { chat.users.first }
     content { Faker::ChuckNorris.fact }
   end
 end

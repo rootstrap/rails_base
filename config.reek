@@ -22,7 +22,7 @@ DuplicateMethodCall:
   allow_calls: []
 FeatureEnvy:
   enabled: true
-  exclude: ['AddChat', 'AddMessage', 'AddParticipant']
+  exclude: ['AddChat', 'AddMessage', 'AddParticipant', 'send_message', 'create_message']
 InstanceVariableAssumption:
   enabled: false
 IrresponsibleModule:

@@ -70,3 +70,10 @@ Style/InitialIndentation:
 Style/SymbolArray:
   Exclude:
     - 'lib/templates/**/add_*.rb'
+
+AllCops:
+  Exclude:
+    - 'lib/templates/chat/migration-models/user.rb'
+    - 'lib/templates/chat/routes.rb'
+    - 'lib/templates/chat/routes_2.rb'
+    - 'lib/templates/chat/sessions_controller.rb'
