@@ -1,0 +1,1 @@
+  mount ActionCable.server => '/cable'
