@@ -28,6 +28,10 @@ module RailsBase
       end
     end
 
+    def replace_in_file(file_name, old_content, new_content)
+      TTY::File.replace_in_file(file_name, old_content, new_content)
+    end
+
     def read_all_content(file_name)
       file = File.open(file_name, 'rb')
       content = file.read

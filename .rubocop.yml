@@ -71,9 +71,13 @@ Style/SymbolArray:
   Exclude:
     - 'lib/templates/**/add_*.rb'
 
+Style/ModuleFunction:
+  Enabled: false
+
 AllCops:
   Exclude:
     - 'lib/templates/chat/migration-models/user.rb'
     - 'lib/templates/chat/routes.rb'
     - 'lib/templates/chat/routes_2.rb'
     - 'lib/templates/chat/sessions_controller.rb'
+    - 'lib/templates/chat/specs/rails_helper.rb'

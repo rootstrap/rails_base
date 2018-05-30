@@ -1,4 +1,5 @@
 module ChatService
+  extend self
   def create_message(chat, content, user)
     message = user.messages.create!(chat: chat, content: content)
     chat.messages << message
@@ -6,7 +7,8 @@ module ChatService
     broadcast_message(chat, message)
     message
   end
-  module_function :create_message
+
+  private
 
   def broadcast_message(chat, message)
     message_data = form_message_data(message)
