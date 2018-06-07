@@ -15,6 +15,7 @@ module RailsBase
         create_jbuilder_files("#{TEMPLATES_PATH}jbuilder/")
         create_spec_files("#{TEMPLATES_PATH}specs/")
         inject_into_files(TEMPLATES_PATH)
+        replace_in_files
       end
 
       def self.migrations(templates_path)
@@ -51,6 +52,7 @@ module RailsBase
         create_file('spec/factories/participant.rb', "#{templates_path}participant_factory.rb")
         create_file('spec/factories/message.rb', "#{templates_path}message_factory.rb")
         create_file('spec/channels/chat_channel_spec.rb', "#{templates_path}chat_channel_spec.rb")
+        create_file('spec/channels/connection_spec.rb', "#{templates_path}connection_spec.rb")
       end
 
       def self.create_jbuilder_files(templates_path)
@@ -76,6 +78,13 @@ module RailsBase
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
                          'include Concerns::ActAsApiRequest',
                          "#{templates_path}sessions_controller.rb")
+        inject_into_file('spec/rails_helper.rb', "require 'simplecov'",
+                         "#{templates_path}specs/rails_helper.rb")
+      end
+
+      def self.replace_in_files
+        replace_in_file('config/cable.yml', "test:\n  adapter: async",
+                        "test:\n  adapter: test")
       end
     end
   end
