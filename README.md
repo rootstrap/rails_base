@@ -28,12 +28,16 @@ Just choose a folder and run
 
 Or just 'rails_base add' to get some help
 
+
+## Current features
+
+* [Chat Documentation](./chat/README.md)
+
 ## Upcoming awesome features
 
 * Facebook Integration
 * Carrierwave
 * Active Admin
-* Chats
 * Twilio
 * Test & Quality tools
 
