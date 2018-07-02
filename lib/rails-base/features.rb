@@ -8,5 +8,9 @@ module RailsBase
     def self.chat
       Chat.install
     end
+
+    def self.twilio
+      Twilio.install
+    end
   end
 end
