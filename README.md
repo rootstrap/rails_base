@@ -31,7 +31,8 @@ Or just 'rails_base add' to get some help
 
 ## Current features
 
-* [Chat Documentation](./chat/README.md)
+* [Facebook Documentation](./docs/facebook.md)
+* [Chat Documentation](./docs/chat.md)
 
 ## Upcoming awesome features
 
