@@ -28,13 +28,14 @@ module RailsBase
         when FEATURE_OPTIONS[:facebook]
           RailsBase::Features.facebook
           puts 'Mark is happy'
-        when FEATURE_OPTIONS[:active_admin]
-          puts 'simple...'
+        when FEATURE_OPTIONS[:twilio]
+          RailsBase::Features.twilio
+          puts 'now start messaging'
         when FEATURE_OPTIONS[:chat]
           RailsBase::Features.chat
           puts 'now go and start talking'
         when FEATURE_OPTIONS[:all]
-          puts 'Oh you greedy one'
+          puts 'Oh you greedy one, not yet'
         else
           puts 'Please select a valid option'
         end
