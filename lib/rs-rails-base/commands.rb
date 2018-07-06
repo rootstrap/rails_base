@@ -48,7 +48,7 @@ module RailsBase
       reference_tag = RailsBase::API_BASE_VERSION
       tag_numbers = reference_tag.split('.')
       major = tag_numbers[0]
-      minor = tag_numbers[2]
+      minor = tag_numbers[1]
       `#{tags} | grep '#{major}.#{minor}.[0-9]' | tail -n 1 `
     end
 

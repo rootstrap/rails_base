@@ -1,9 +1,9 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rails-base/constants'
+require 'rs-rails-base/constants'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'rails-base'
+  spec.name          = 'rs-rails-base'
   spec.version       = RailsBase::VERSION
   spec.authors       = ['Rootstrap']
   spec.email         = ['info@rootstrap.com']
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   end
   spec.files += Dir.glob('lib/**/*')
 
-  spec.executables = ['rails_base']
+  spec.executables = ['rs_rails_base']
   spec.require_paths = ['lib']
 
   spec.add_dependency 'tty-file', '~> 0.4.0'
