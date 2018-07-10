@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rails-base.gemspec
+# Specify your gem's dependencies in rs-rails-base.gemspec
 gemspec
 
 group :development, :test do

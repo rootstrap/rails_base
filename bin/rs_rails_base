@@ -4,7 +4,7 @@ require 'pathname'
 source_path = (Pathname.new(__FILE__).dirname + '../lib').expand_path
 $LOAD_PATH << source_path
 
-require 'rails_base'
+require 'rs_rails_base'
 require 'commander/import'
 
 if !ARGV.empty? && (['-v', '--version'].include? ARGV[0])
@@ -18,7 +18,7 @@ program :description, 'Rootstrap rails base modules'
 default_command :help
 
 command :new do |c|
-  c.syntax = 'rails_base new'
+  c.syntax = 'rs_rails_base new'
   c.description = 'creates a new awesome project'
   c.action do
     RailsBase::Commands.new_project
@@ -29,7 +29,7 @@ command :new do |c|
 end
 
 command :add do |c|
-  c.syntax = 'rails_base add FEATURE'
+  c.syntax = 'rs_rails_base add FEATURE'
   c.description = 'add great features to your project'
   c.action do |args|
     RailsBase::Commands.add_feature(args.first)
