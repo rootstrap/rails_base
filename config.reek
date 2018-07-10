@@ -9,7 +9,7 @@ ClassVariable:
   exclude: []
 ControlParameter:
   enabled: true
-  exclude: []
+  exclude: ['feature_case']
 DataClump:
   enabled: true
   exclude: []
