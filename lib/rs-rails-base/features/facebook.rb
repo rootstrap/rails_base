@@ -18,10 +18,10 @@ module RailsBase
       end
 
       def self.inject_files(templates_path)
-        inject_into_file('config/routes.rb', 'get :profile',
+        inject_into_file('config/routes.rb', 'resource :user, only: :update do',
                          "#{templates_path}routes.rb")
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
-                         'include Concerns::ActAsApiRequest',
+                         'include Api::Concerns::ActAsApiRequest',
                          "#{templates_path}sessions_controller.rb")
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
                          'private',

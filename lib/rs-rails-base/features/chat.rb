@@ -71,12 +71,12 @@ module RailsBase
       end
 
       def self.inject_into_files(templates_path)
-        inject_into_file('config/routes.rb', "profile\n        end", "#{templates_path}routes.rb")
+        inject_into_file('config/routes.rb', ":profile\n        end", "#{templates_path}routes.rb")
         inject_into_file('config/routes.rb', "    end\n  end", "#{templates_path}routes_2.rb")
         inject_into_file('app/models/user.rb', "include DeviseTokenAuth::Concerns::User\n",
                          "#{templates_path}migration-models/user.rb")
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
-                         'include Concerns::ActAsApiRequest',
+                         'include Api::Concerns::ActAsApiRequest',
                          "#{templates_path}sessions_controller.rb")
         inject_into_file('spec/rails_helper.rb', "require 'simplecov'",
                          "#{templates_path}specs/rails_helper.rb")

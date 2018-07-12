@@ -3,5 +3,5 @@ module RailsBase
   API_BASE_VERSION = '1.1.0'.freeze
   REMOTE_URI = 'git://github.com/rootstrap/rails_api_base.git'.freeze
   FEATURE_OPTIONS = { facebook: 'Facebook', twilio: 'SMS',
-                      chat: 'Chat', all: 'All' }.freeze
+                      chat: 'Chat' }.freeze
 end

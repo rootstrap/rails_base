@@ -24,21 +24,30 @@ module RailsBase
       if feature.nil?
         display_menu
       else
-        case feature
-        when FEATURE_OPTIONS[:facebook]
-          RailsBase::Features.facebook
-          puts 'Mark is happy'
-        when FEATURE_OPTIONS[:twilio]
-          RailsBase::Features.twilio
-          puts 'now start messaging'
-        when FEATURE_OPTIONS[:chat]
-          RailsBase::Features.chat
-          puts 'now go and start talking'
-        when FEATURE_OPTIONS[:all]
-          puts 'Oh you greedy one, not yet'
-        else
-          puts 'Please select a valid option'
+        feature_case(feature)
+      end
+    end
+
+    def self.feature_case(feature)
+      case feature
+      when FEATURE_OPTIONS[:facebook]
+        RailsBase::Features.facebook
+        puts 'Mark is happy'
+      when FEATURE_OPTIONS[:twilio]
+        RailsBase::Features.twilio
+        puts 'now start messaging'
+      when FEATURE_OPTIONS[:chat]
+        RailsBase::Features.chat
+        puts 'now go and start talking'
+      when 'all', 'All'
+        FEATURE_OPTIONS.each do |k, v|
+          puts "Installing #{v}"
+          RailsBase::Features.send(k)
+          puts "Feature #{v} installed"
         end
+        puts 'All set'
+      else
+        puts 'Please select a valid option'
       end
     end
 
@@ -64,7 +73,7 @@ module RailsBase
 
     def self.display_menu
       say_something('FEATURE OPTIONS:')
-      RailsBase::FEATURE_OPTIONS.each_value do |feature|
+      RailsBase::FEATURE_OPTIONS.merge(all: 'All').each_value do |feature|
         say_something(" #{feature}")
       end
     end
