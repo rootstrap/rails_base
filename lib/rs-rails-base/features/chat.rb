@@ -76,8 +76,8 @@ module RailsBase
         inject_into_file('app/models/user.rb', "include DeviseTokenAuth::Concerns::User\n",
                          "#{templates_path}migration-models/user.rb")
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
-                         'include Api::Concerns::ActAsApiRequest',
-                         "#{templates_path}sessions_controller.rb")
+                         "include Api::Concerns::ActAsApiRequest\n",
+                         "#{templates_path}sessions_controller.rb", true)
         inject_into_file('spec/rails_helper.rb', "require 'simplecov'",
                          "#{templates_path}specs/rails_helper.rb")
       end

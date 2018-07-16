@@ -1,3 +1,3 @@
-            controller :sessions do
-              post :facebook, on: :collection
-            end
+          controller :sessions do
+            post :facebook, on: :collection
+          end

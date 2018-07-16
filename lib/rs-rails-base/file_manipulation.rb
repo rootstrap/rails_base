@@ -17,11 +17,12 @@ module RailsBase
       TTY::File.create_file(file_name, read_all_content(from_file))
     end
 
-    def inject_into_file(file_name, after, from)
+    def inject_into_file(file_name, after, from, extra_line_flag = false)
       from_file = File.expand_path("#{__dir__}/#{from}")
-      content = "\n#{read_all_content(from_file)}"
+      content = read_all_content(from_file)
+      content += "\n" if extra_line_flag
       begin
-        TTY::File.inject_into_file(file_name, content, after: after)
+        TTY::File.inject_into_file(file_name, content, after: "#{after}\n")
       rescue StandardError => ex
         say_something('Make sure you are on the root of your project please')
         puts ex

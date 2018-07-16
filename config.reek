@@ -3,13 +3,13 @@ Attribute:
   exclude: []
 BooleanParameter:
   enabled: true
-  exclude: []
+  exclude: ['inject_into_file']
 ClassVariable:
   enabled: false
   exclude: []
 ControlParameter:
   enabled: true
-  exclude: ['feature_case']
+  exclude: ['feature_case', 'inject_into_file']
 DataClump:
   enabled: true
   exclude: []
