@@ -7,6 +7,7 @@ module RailsBase
       migration = next_migration_number
       create_file("db/migrate/#{migration}_#{name}",
                   "#{template_path}#{name}")
+      sleep(0.1)
     end
 
     def run_migrations
