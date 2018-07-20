@@ -21,8 +21,8 @@ module RailsBase
         inject_into_file('config/routes.rb', 'resource :user, only: :update do',
                          "#{templates_path}routes.rb")
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
-                         'include Api::Concerns::ActAsApiRequest',
-                         "#{templates_path}sessions_controller.rb")
+                         "include Api::Concerns::ActAsApiRequest\n",
+                         "#{templates_path}sessions_controller.rb", true)
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
                          'private',
                          "#{templates_path}sessions_controller_2.rb")
