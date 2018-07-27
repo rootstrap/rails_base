@@ -24,7 +24,7 @@ module RailsBase
                          "include Api::Concerns::ActAsApiRequest\n",
                          "#{templates_path}sessions_controller.rb", true)
         inject_into_file('app/controllers/api/v1/sessions_controller.rb',
-                         'private',
+                         "private\n",
                          "#{templates_path}sessions_controller_2.rb")
         inject_into_file('spec/factories/user.rb',
                          "number(10) }\n  end",

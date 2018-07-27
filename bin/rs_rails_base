@@ -19,7 +19,7 @@ default_command :help
 
 command :new do |c|
   c.syntax = 'rs_rails_base new'
-  c.description = 'creates a new awesome project'
+  c.description = 'Creates a new awesome project'
   c.action do
     RailsBase::Commands.new_project
     RailsBase::Commands.display_menu
@@ -30,7 +30,7 @@ end
 
 command :add do |c|
   c.syntax = 'rs_rails_base add FEATURE'
-  c.description = 'add great features to your project'
+  c.description = 'Adds great features to your project'
   c.action do |args|
     RailsBase::Commands.add_feature(args.first)
   end
