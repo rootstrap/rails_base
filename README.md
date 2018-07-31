@@ -1,45 +1,47 @@
-# Rails::Base
+# Rails-Base Projects generator
 [![CircleCI](https://circleci.com/gh/rootstrap/rails_base.svg?style=shield)](https://circleci.com/gh/rootstrap/rails_base)
 [![License](https://img.shields.io/github/license/rootstrap/rails_base.svg)](https://github.com/rootstrap/rails_base/blob/master/LICENSE.md)
 
-This is a project generator that comes with a lot of amazing features/help code.
-It is intended to be a start point for your new projects and also import new functionalities on a safe way to your existing ones.
+RS-Rails-Base is a generator that creates boilerplate projects for Ruby On Rails backend. It comes with a lot of amazing features that will make you jumpstart into development very quickly.
+
+It is not only a starting point for all your new projects, but it can also be used to incorporate new functionalities into your existing projects.
 
 And obviously if you want something new, just ask for it!!! or do a pull request if you are brave enough
 
 ## Installation
 
-Install it yourself as:
+It is as simple as:
 
     $ gem install rs-rails-base
 
-This will generate some commands with it, and thats all you need.
+This will generate some commands with it, and that's all you need.
+
 
 ## Usage
 
-* First Project
+* Starting a project from scratch
 
-Just choose a folder and run
+Just choose your folder and run
 		
 		rs_rails_base new
 
-* Existing Project
 
+* Existing Project
 
 		rs_rails_base add FEATURE
 
-Or just 'rs_rails_base add' to get some help
+Or just type 'rs_rails_base add' to get some help
 
 
 ## Current features
 
-* [Facebook Documentation](./docs/facebook.md)
-* [Chat Documentation](./docs/chat.md)
-* [Twilio SMS](./docs/twilio.md)
+* "facebook". [See doc](./docs/facebook.md). 
+* "chat". [See doc](./docs/chat.md)
+* "twilio". [(sms only) See doc](./docs/twilio.md)
 
-## Upcoming awesome features
+## Upcoming awesome features/and integrations
 
-* Carrierwave
+* Carrierwave 
 * Active Admin
 * Twilio Calls
 * Test & Quality tools
