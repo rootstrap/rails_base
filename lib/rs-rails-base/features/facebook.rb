@@ -13,6 +13,8 @@ module RailsBase
                     "#{templates_path}facebook_spec.rb")
         create_file('app/services/facebook_service.rb',
                     "#{templates_path}facebook_service.rb")
+        create_file('config/initializers/koala.rb',
+                    "#{templates_path}koala.rb")
         append_to_file('apiary.apib', "#{templates_path}apiary.apib")
         append_to_file('config/locales/en.yml', "#{templates_path}en.yml")
       end
