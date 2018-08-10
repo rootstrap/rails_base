@@ -8,6 +8,6 @@ class FacebookService
   end
 
   def client
-    Koala::Facebook::API.new(@access_token, ENV['FACEBOOK_SECRET'])
+    Koala::Facebook::API.new(@access_token)
   end
 end

@@ -35,7 +35,7 @@ Or just type 'rs_rails_base add' to get some help
 
 ## Current features
 
-* "facebook". [See doc](./docs/facebook.md). 
+* "facebook". [See doc](./docs/facebook.md)
 * "chat". [See doc](./docs/chat.md)
 * "twilio". [(sms only) See doc](./docs/twilio.md)
 
