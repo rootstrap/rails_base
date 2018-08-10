@@ -17,6 +17,8 @@ module RailsBase
                     "#{templates_path}koala.rb")
         append_to_file('apiary.apib', "#{templates_path}apiary.apib")
         append_to_file('config/locales/en.yml', "#{templates_path}en.yml")
+        append_to_file('config/application.yml.example',
+                       "#{templates_path}application.yml")
       end
 
       def self.inject_files(templates_path)
@@ -37,6 +39,9 @@ module RailsBase
         inject_into_file('spec/routing/sessions_routing_spec.rb',
                          "sessions#create'\)\n    end",
                          "#{templates_path}sessions_routing_spec.rb")
+        inject_into_file('config/initializers/figaro.rb',
+                         'variables += %w[SECRET_KEY_BASE]',
+                         "#{templates_path}figaro.rb")
       end
     end
   end

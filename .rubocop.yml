@@ -73,3 +73,7 @@ Style/SymbolArray:
 
 Style/ModuleFunction:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - lib/templates/facebook/figaro.rb
